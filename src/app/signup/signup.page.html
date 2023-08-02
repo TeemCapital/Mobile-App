@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <img src="../../assets/menu_bar.svg" />
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button class="notification">
+        <ion-icon name="notifications-outline" color="dark"></ion-icon>
+        <span>&nbsp;</span>
+      </ion-button>
+      <ion-button class="filter">
+        <ion-icon name="funnel-outline" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-header>
+
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center"  >Un-matched quality standards</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="6">
+        <ion-img src="assets/images/user-signup.png" class="img-fluid"></ion-img>
+      </ion-col>
+      <ion-col size="12" size-md="6">
+        <ion-card class="ion-margin shadow-lg rounded" style="--background: rgb(253, 250, 250);">
+          <ion-card-header>
+            <ion-card-title>NEW TO THE STORE?</ion-card-title>
+            <ion-card-subtitle><strong>CREATE YOUR ACCOUNT</strong></ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <form #registrationForm="ngForm" (ngSubmit)="submit(registrationForm.value)">
+              <ion-item>
+                <ion-label position="stacked">EMAIL:</ion-label>
+                <ion-input
+                  required
+                  ngModel
+                  placeholder="@xyz.com"
+                  name="email"
+                  type="email"
+                ></ion-input>
+                <ion-icon name="person" slot="start"></ion-icon>
+              </ion-item>
+              <ion-item>
+                <ion-label position="stacked">Username:</ion-label>
+                <ion-input ngModel placeholder="username" name="name" type="text"></ion-input>
+                <ion-icon name="person" slot="start"></ion-icon>
+              </ion-item>
+              <ion-item>
+                <ion-label position="stacked">PASSWORD:</ion-label>
+                <ion-input
+                  ngModel
+                  required
+                  name="password"
+                  type="password"
+                ></ion-input>
+                <ion-icon name="lock-closed" slot="start"></ion-icon>
+              </ion-item>
+              <p>ALREADY HAVE AN ACCOUNT?<a routerLink="../login" style="cursor: pointer;"><b> LOGIN</b></a></p>
+              <ion-button
+                expand="full"
+                color="dark"
+                type="submit"
+                [disabled]="!registrationForm.valid"
+              >Signup</ion-button>
+            </form>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,50 @@
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h1 class="ion-text-center ion-bg-dark ion-rounded ion-p-3 ion-text-white ion-my-3">Address Details</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <small class="ion-text-danger ion-my-2">*Double check the entered info to avoid any issues</small>
+        <ion-card class="ion-border ion-p-3 ion-rounded ion-shadow">
+          <form [formGroup]="addressForm">
+            <ion-item>
+              <ion-label position="stacked">Address Details:</ion-label>
+              <ion-input
+                formControlName="address"
+                placeholder="House#,Area name,City name"
+                type="text"
+              ></ion-input>
+            </ion-item>
+          
+            <ion-item>
+              <ion-label position="stacked">Email Address:</ion-label>
+              <ion-input
+                formControlName="buyer_email_address"
+                required
+                placeholder="123@gmail.com"
+                type="email"
+              ></ion-input>
+            </ion-item>
+          
+            <ion-item>
+              <ion-label position="stacked">Contact Number:</ion-label>
+              <ion-input
+                formControlName="buyer_contact_number"
+                maxlength="13"
+                required
+                placeholder="+921234567"
+                type="text"
+              ></ion-input>
+            </ion-item>
+          
+            <ion-button class="ion-mt-2 ion-button" expand="full" color="dark" (click)="getData()">Done</ion-button>
+          </form>
+          
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

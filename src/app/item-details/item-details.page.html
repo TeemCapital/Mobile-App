@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="primary" class="backbtn" routerLink="/home" routerDirection="back">
+        <img src="../../assets/back-dark.svg" />
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="search-outline" color="dark"></ion-icon>
+      </ion-button>
+      <ion-button class="notification">
+        <ion-icon name="notifications-outline" color="dark"></ion-icon>
+        <span>&nbsp;</span>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="6" class="ion-text-center" *ngFor="let products of products">
+        <ion-img src="{{products.imagepath}}" class="img-fluid w-50"></ion-img>
+      </ion-col>
+      <ion-col size="12" size-md="6" class="ion-text-center" *ngFor="let products of products"> 
+        <ion-card class="ion-margin p-3 rounded shadow">
+          <ion-card-header>
+            <ion-card-title class="text-white bg-dark rounded p-3"><strong>{{products.title}}</strong></ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p><b>Description: {{products.description}}</b></p>
+            <span class="bg-success text-white p-1 rounded mb-2"><ion-icon name="shirt-outline"></ion-icon>
+              <b>{{products.size}}</b></span>
+            <h5 class="text-danger">Price: {{products.price | currency}}</h5>
+            <div class="ion-text-center">
+              <ion-button (click)="decrement()" *ngIf="disableDecrement" class="quantity-left-minus" shape="round">
+                <ion-icon name="remove"></ion-icon>
+              </ion-button>
+              <ion-input type="number" readonly name="quantity" [value]="quantity" min="1" max="100" class="ion-text-center"></ion-input>
+              <ion-button (click)="increment()" class="quantity-right-plus" shape="round">
+                <ion-icon name="add"></ion-icon>
+              </ion-button>
+            </div>
+          </ion-card-content>
+          <ion-row class="ion-justify-content-center ion-margin">
+            <ion-col>
+              <ion-button expand="full" color="danger" (click)="AddtoCart(products)">Add to Cart</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button expand="full" color="primary" (click)="Addtofav()">Add to Favourite</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button expand="full" color="dark" routerLink="/product/men">Return to Shopping</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

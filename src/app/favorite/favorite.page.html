@@ -1,0 +1,43 @@
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button color="primary" class="backbtn" routerLink="/home/men" routerDirection="back">
+          <img src="../../assets/back-dark.svg" />
+        </ion-button>
+      </ion-buttons>
+  
+      <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon name="search-outline" color="dark"></ion-icon>
+        </ion-button>
+        <ion-button class="notification">
+          <ion-icon name="notifications-outline" color="dark"></ion-icon>
+          <span>&nbsp;</span>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+<ion-content>
+  <div class="alert alert-danger  mt-2" *ngIf="deleteNoti" role="alert">
+    The product has been deleted from favourites
+  </div>
+  <div class="container">
+    <h1 class="ion-text-center">
+      Your Favourites <ion-icon name="heart" class="mx-2 text-danger"></ion-icon>
+    </h1>
+    <div class="row ion-margin">
+      <div class="card mx-2 my-2" style="width: 20rem;" *ngFor="let product of favourites;let i = index">
+        <img src="{{ product.imagepath }}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ product.title }}</h5>
+          <p class="card-title">E-mail:<b>{{ product.description }}</b></p>
+          <p class="card-text">{{ product.Price }}</p>
+          <ion-button (click)="delete(i, product)" color="danger">
+            <ion-icon name="close" class="mx-2"></ion-icon>Remove From Favourites
+          </ion-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

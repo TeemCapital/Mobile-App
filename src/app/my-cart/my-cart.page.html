@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <img src="../../assets/menu_bar.svg" />
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button class="notification">
+        <ion-icon name="notifications-outline" color="dark"></ion-icon>
+        <span>&nbsp;</span>
+      </ion-button>
+      <ion-button class="filter">
+        <ion-icon name="funnel-outline" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-header>
+
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center"  >Your Cart</ion-title>
+    <ion-content>Start adding items to Cart</ion-content>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-grid *ngIf="MenproductData.length > 0">
+    <ion-row>
+      <ion-col size="12">
+        <h1 class="ion-text-center ion-text-white"><strong>YOUR CART</strong></h1>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let product of MenproductData; let i = index" class="ion-align-items-center ion-bg-light ion-rounded ion-p-3 ion-shadow">
+      <ion-col size="5">
+        <ion-img src="{{product.imagepath}}"></ion-img>
+      </ion-col>
+      <ion-col size="5">
+        <h5>{{product.title}}</h5>
+      </ion-col>
+      <ion-col size="5" class="ion-text-center">
+        <h5>Quantity</h5>
+        <div>{{product.quantity}}x</div>
+      </ion-col>
+      <ion-col size="5">
+        <h6>Description</h6>
+        <p><strong>{{product.description}}</strong></p>
+      </ion-col>
+      <ion-col size="5" class="ion-text-center">
+        <h1 class="ion-text-danger">Price/- {{product.totalPrice | currency}}</h1>
+      </ion-col>
+
+      <ion-col size="12" class="ion-text-center">
+        <ion-button (click)="delete(i, product)" color="danger">Delete Product</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-align-items-center ion-justify-content-center">
+      <ion-col size="12" size-md="6" class="checkout ion-my-3 ion-text-center">
+        <ion-button routerLink="../buyer-info" color="danger" expand="full">
+          <ion-icon name="arrow-forward-circle-outline"></ion-icon> Proceed to Checkout
+        </ion-button>
+        <ion-button routerLink="/home" color="dark" expand="full">
+          <ion-icon name="bag-handle-outline"></ion-icon> Continue Shopping
+        </ion-button>
+      </ion-col>
+      <ion-col size="12" size-md="6">
+        <h1 class="ion-text-center ion-text-white ion-bg-danger ion-rounded ion-p-2">Your Grand Total is:- {{finalAmount | currency}}</h1>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="ion-text-center" *ngIf="!MenproductData.length && !loadingData">
+    <h4 class="ion-text-bold">YOUR CART IS CURRENTLY EMPTY!</h4>
+    <ion-button routerLink="/" color="dark">Shop Now</ion-button>
+  </div>
+</ion-content>

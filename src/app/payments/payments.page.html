@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="primary" class="backbtn" routerLink="../" routerDirection="back">
+        <img src="../../assets/back-dark.svg" />
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="search-outline" color="dark"></ion-icon>
+      </ion-button>
+      <ion-button class="notification">
+        <ion-icon name="notifications-outline" color="dark"></ion-icon>
+        <span>&nbsp;</span>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h1 class="ion-bg-dark ion-mt-2 ion-text-white ion-p-3 ion-rounded ion-text-center">
+          Review and Payments
+        </h1>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size-md="8" class="ion-mx-auto ion-table-responsive">
+        <ion-grid >
+          <ion-row >
+            <ion-col class="ion-text-bold"> Title</ion-col>
+            <ion-col class="ion-text-bold"> Size </ion-col>
+            <ion-col class="ion-text-bold"> Quantity </ion-col>
+            <ion-col class="ion-text-bold"> Category </ion-col>
+            <ion-col class="ion-text-bold"> Price</ion-col>
+            <ion-col class="ion-text-bold"> Description </ion-col>
+          </ion-row>
+          <ion-row *ngFor="let product of products">
+            <ion-col>{{ product.title }}</ion-col>
+            <ion-col>{{ product.size }}</ion-col>
+            <ion-col>{{ product.quantity }}</ion-col>
+            <ion-col>{{ product.category }}</ion-col>
+            <ion-col>{{ product. price}}</ion-col>
+            <ion-col>{{ product. description}}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size-md="8" class="ion-mx-auto">
+        <div class="ion-my-3">
+          <ion-label><b>Payment method</b></ion-label>
+          <small style="color: red; font-size: 10px; margin-left: 5px">(Required*)</small>
+          <ion-select
+            [(ngModel)]="selectedPaymentMethod"
+            name="category"
+            placeholder="Select Payment Method"
+          >
+            <ion-select-option *ngFor="let payment of paymentMethod" [value]="payment">{{
+              payment
+            }}</ion-select-option>
+          </ion-select>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size-md="8" class="ion-mx-auto">
+        <ion-button
+          class="ion-mx-2 ion-my-xs-4"
+          color="danger"
+          (click)="placeOrder()"
+        >
+        <ion-icon name="arrow-forward-circle-outline"></ion-icon> Place Order
+        </ion-button>
+        <ion-button class="ion-mx-2" routerLink="/home" color="dark">
+          <ion-icon name="bag-handle-outline"></ion-icon> Continue Shopping
+        </ion-button>
+        <span class="ion-bg-danger ion-text-white ion-rounded ion-p-3 ion-mx-2">
+          Total: {{ finalAmount | currency }}
+        </span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
